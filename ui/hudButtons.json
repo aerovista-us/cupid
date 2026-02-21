@@ -1,0 +1,65 @@
+[
+  {
+    "id": "btn_stats",
+    "label": "Stats",
+    "x": 0.028,
+    "y": 0.038,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "stats"
+  },
+  {
+    "id": "btn_log",
+    "label": "Log",
+    "x": 0.078,
+    "y": 0.038,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "log"
+  },
+  {
+    "id": "btn_map",
+    "label": "Map",
+    "x": 0.885,
+    "y": 0.038,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "map"
+  },
+  {
+    "id": "btn_inventory",
+    "label": "Inv",
+    "x": 0.028,
+    "y": 0.852,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "inventory"
+  },
+  {
+    "id": "btn_missions",
+    "label": "Missions",
+    "x": 0.078,
+    "y": 0.852,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "missions"
+  },
+  {
+    "id": "btn_editor",
+    "label": "Edit",
+    "x": 0.5,
+    "y": 0.852,
+    "w": 0.08,
+    "h": 0.11,
+    "panel": "editor"
+  },
+  {
+    "id": "btn_settings",
+    "label": "Settings",
+    "x": 0.885,
+    "y": 0.852,
+    "w": 0.06,
+    "h": 0.11,
+    "panel": "settings"
+  }
+]

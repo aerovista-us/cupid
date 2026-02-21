@@ -1,0 +1,10 @@
+{
+  "id": "karaoke_bar",
+  "title": "Dive Bar Karaoke",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "hotspots": [],
+  "widgets": {
+    "locationTitle": true
+  }
+}

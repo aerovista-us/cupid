@@ -1,0 +1,173 @@
+[
+  {
+    "id": "silence_token",
+    "name": "Silence Token",
+    "type": "Tool",
+    "desc": "Mute the moment. Increases calm, reduces chaos.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.chaos", "value": -1 },
+      { "type": "add", "key": "stats.trust", "value": 1 }
+    ]
+  },
+  {
+    "id": "spark_pin",
+    "name": "Spark Pin",
+    "type": "Key",
+    "desc": "A tiny catalyst. Unlocks certain flirt hotspots later.",
+    "usable": false
+  },
+  {
+    "id": "rose_note",
+    "name": "Rose Note",
+    "type": "Memory",
+    "desc": "A memory anchor. Improves late-game reconnection odds.",
+    "usable": false
+  },
+  {
+    "id": "honesty_catalyst",
+    "name": "Honesty Catalyst",
+    "type": "Tool",
+    "desc": "Forces a moment of truth. Increases trust but may raise resentment.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.trust", "value": 2 },
+      { "type": "add", "key": "stats.resentment", "value": 1 }
+    ]
+  },
+  {
+    "id": "tension_breaker",
+    "name": "Tension Breaker",
+    "type": "Tool",
+    "desc": "Lightens the mood. Reduces resentment and chaos.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.resentment", "value": -2 },
+      { "type": "add", "key": "stats.chaos", "value": -1 }
+    ]
+  },
+  {
+    "id": "trust_key",
+    "name": "Trust Key",
+    "type": "Key",
+    "desc": "Unlocks deeper conversation paths and vulnerable moments.",
+    "usable": false
+  },
+  {
+    "id": "memory_fragment",
+    "name": "Memory Fragment",
+    "type": "Memory",
+    "desc": "A shared moment captured. Affects relationship intensity.",
+    "usable": false
+  },
+  {
+    "id": "regret_anchor",
+    "name": "Regret Anchor",
+    "type": "Memory",
+    "desc": "A moment of missed opportunity. Can unlock reconciliation paths.",
+    "usable": false
+  },
+  {
+    "id": "chaos_amplifier",
+    "name": "Chaos Amplifier",
+    "type": "Tool",
+    "desc": "Embrace the chaos. Increases volatility and wild outcomes.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.chaos", "value": 3 },
+      { "type": "add", "key": "stats.attraction", "value": 1 }
+    ]
+  },
+  {
+    "id": "calm_anchor",
+    "name": "Calm Anchor",
+    "type": "Tool",
+    "desc": "Brings peace to a tense moment. Reduces chaos significantly.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.chaos", "value": -3 },
+      { "type": "add", "key": "stats.trust", "value": 1 }
+    ]
+  },
+  {
+    "id": "attraction_spark",
+    "name": "Attraction Spark",
+    "type": "Tool",
+    "desc": "Creates a moment of undeniable chemistry.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.attraction", "value": 2 }
+    ]
+  },
+  {
+    "id": "forgiveness_token",
+    "name": "Forgiveness Token",
+    "type": "Memory",
+    "desc": "A gesture of reconciliation. Reduces resentment permanently.",
+    "usable": false
+  },
+  {
+    "id": "shared_secret",
+    "name": "Shared Secret",
+    "type": "Memory",
+    "desc": "Something only you two know. Deepens connection.",
+    "usable": false
+  },
+  {
+    "id": "apology_note",
+    "name": "Apology Note",
+    "type": "Tool",
+    "desc": "A sincere apology. Reduces resentment and builds trust.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.resentment", "value": -2 },
+      { "type": "add", "key": "stats.trust", "value": 1 }
+    ]
+  },
+  {
+    "id": "jealousy_seed",
+    "name": "Jealousy Seed",
+    "type": "Memory",
+    "desc": "A moment of insecurity. Can grow into resentment or fuel attraction.",
+    "usable": false
+  },
+  {
+    "id": "vulnerability_key",
+    "name": "Vulnerability Key",
+    "type": "Key",
+    "desc": "Unlocks deep emotional moments and truth-telling scenes.",
+    "usable": false
+  },
+  {
+    "id": "romance_catalyst",
+    "name": "Romance Catalyst",
+    "type": "Tool",
+    "desc": "Creates a perfect romantic moment. Increases attraction and trust.",
+    "usable": true,
+    "effects": [
+      { "type": "add", "key": "stats.attraction", "value": 2 },
+      { "type": "add", "key": "stats.trust", "value": 1 }
+    ]
+  },
+  {
+    "id": "distance_marker",
+    "name": "Distance Marker",
+    "type": "Memory",
+    "desc": "A moment that created space. Can be overcome or deepened.",
+    "usable": false
+  },
+  {
+    "id": "reconnection_bridge",
+    "name": "Reconnection Bridge",
+    "type": "Memory",
+    "desc": "A path back to each other. Unlocks reconciliation arcs.",
+    "usable": false
+  },
+  {
+    "id": "commitment_token",
+    "name": "Commitment Token",
+    "type": "Memory",
+    "desc": "A promise made. Affects long-term relationship stability.",
+    "usable": false
+  }
+]

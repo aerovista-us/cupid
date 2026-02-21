@@ -1,0 +1,119 @@
+[
+  {
+    "id": "mission_core_01",
+    "title": "Get them talking",
+    "desc": "Move the relationship off neutral by creating a real moment.",
+    "type": "core",
+    "hint": "Try something small and intentional in the Afterparty Apartment."
+  },
+  {
+    "id": "mission_core_02",
+    "title": "Build trust",
+    "desc": "Establish a foundation of trust through consistent choices.",
+    "type": "core",
+    "hint": "Make choices that show respect and honesty."
+  },
+  {
+    "id": "mission_core_03",
+    "title": "Navigate conflict",
+    "desc": "Handle disagreements without destroying the relationship.",
+    "type": "core",
+    "hint": "Sometimes conflict can deepen understanding."
+  },
+  {
+    "id": "mission_scene_01",
+    "title": "The Phone Problem",
+    "desc": "Decide whether to flip the phone or leave it.",
+    "type": "scene",
+    "sceneId": "afterparty_apartment",
+    "hint": "Tap the phone hotspot."
+  },
+  {
+    "id": "mission_scene_02",
+    "title": "The Coffee Table",
+    "desc": "Explore the memories and secrets on the coffee table.",
+    "type": "scene",
+    "sceneId": "afterparty_apartment",
+    "hint": "Check the coffee table hotspot."
+  },
+  {
+    "id": "mission_scene_03",
+    "title": "Couch Distance",
+    "desc": "Navigate the physical and emotional space on the couch.",
+    "type": "scene",
+    "sceneId": "afterparty_apartment",
+    "hint": "Interact with the couch hotspot."
+  },
+  {
+    "id": "mission_scene_04",
+    "title": "Late Night Conversation",
+    "desc": "Have a meaningful conversation at the diner.",
+    "type": "scene",
+    "sceneId": "late_night_diner",
+    "hint": "Find conversation hotspots."
+  },
+  {
+    "id": "mission_scene_05",
+    "title": "Laundry Room Tension",
+    "desc": "Navigate the awkward intimacy of doing laundry together.",
+    "type": "scene",
+    "sceneId": "neon_laundry",
+    "hint": "Explore the laundry room interactions."
+  },
+  {
+    "id": "mission_scene_06",
+    "title": "Karaoke Moment",
+    "desc": "Decide whether to join them on stage or stay in the crowd.",
+    "type": "scene",
+    "sceneId": "karaoke_bar",
+    "hint": "Check the stage area."
+  },
+  {
+    "id": "mission_scene_07",
+    "title": "Rooftop Truth",
+    "desc": "Have a moment of honesty on the rooftop.",
+    "type": "scene",
+    "sceneId": "rooftop",
+    "hint": "Explore the rooftop overlook."
+  },
+  {
+    "id": "mission_scene_08",
+    "title": "Road Trip Stop",
+    "desc": "Make a meaningful choice during the gas station stop.",
+    "type": "scene",
+    "sceneId": "gas_station",
+    "hint": "Interact with the gas station environment."
+  },
+  {
+    "id": "mission_scene_09",
+    "title": "Party Dynamics",
+    "desc": "Navigate jealousy and social dynamics at the house party.",
+    "type": "scene",
+    "sceneId": "house_party",
+    "hint": "Watch for jealousy triggers."
+  },
+  {
+    "id": "mission_scene_10",
+    "title": "Rain Walk Intimacy",
+    "desc": "Share a quiet moment during the rain walk.",
+    "type": "scene",
+    "sceneId": "rain_walk",
+    "hint": "Find intimate conversation moments."
+  },
+  {
+    "id": "mission_scene_11",
+    "title": "Airport Goodbye",
+    "desc": "Make a final choice before they leave.",
+    "type": "scene",
+    "sceneId": "airport",
+    "hint": "This is a turning point moment."
+  },
+  {
+    "id": "mission_scene_12",
+    "title": "Hospital Waiting",
+    "desc": "Be present during a difficult time.",
+    "type": "scene",
+    "sceneId": "hospital",
+    "hint": "Show support and truth."
+  }
+]

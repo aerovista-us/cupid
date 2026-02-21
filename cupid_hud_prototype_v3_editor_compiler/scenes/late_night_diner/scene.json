@@ -1,0 +1,10 @@
+{
+  "id": "late_night_diner",
+  "title": "Late Night Diner",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "hotspots": [],
+  "widgets": {
+    "locationTitle": true
+  }
+}

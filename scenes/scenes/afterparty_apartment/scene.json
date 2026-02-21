@@ -1,0 +1,55 @@
+{
+  "id": "afterparty_apartment",
+  "title": "Afterparty Apartment",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "hotspots": [
+    {
+      "id": "phone",
+      "x": 0.66,
+      "y": 0.7,
+      "w": 0.12,
+      "h": 0.14,
+      "label": "Phone",
+      "choices": [
+        {
+          "text": "Flip it over",
+          "effects": [
+            {
+              "type": "add",
+              "key": "stats.trust",
+              "value": -1
+            },
+            {
+              "type": "add",
+              "key": "stats.chaos",
+              "value": 2
+            },
+            {
+              "type": "flag",
+              "key": "flags.saw_text",
+              "value": true
+            }
+          ],
+          "toast": "+2 Chaos  \u00b7  -1 Trust"
+        },
+        {
+          "text": "Leave it",
+          "effects": [
+            {
+              "type": "add",
+              "key": "stats.trust",
+              "value": 1
+            },
+            {
+              "type": "add",
+              "key": "stats.resentment",
+              "value": -1
+            }
+          ],
+          "toast": "+1 Trust  \u00b7  -1 Resentment"
+        }
+      ]
+    }
+  ]
+}

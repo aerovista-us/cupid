@@ -1,0 +1,10 @@
+{
+  "id": "house_party",
+  "title": "Friend’s House Party",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "hotspots": [],
+  "widgets": {
+    "locationTitle": true
+  }
+}

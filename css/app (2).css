@@ -1,0 +1,218 @@
+
+:root{
+  --safeTop: env(safe-area-inset-top, 0px);
+  --safeBot: env(safe-area-inset-bottom, 0px);
+  --bg:#07070a;
+  --glass: rgba(20, 20, 28, 0.72);
+  --glass2: rgba(12, 12, 16, 0.85);
+  --border: rgba(255,255,255,0.10);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.68);
+  --accent: rgba(255, 70, 190, 0.95);
+  --shadow: 0 18px 60px rgba(0,0,0,0.55);
+  --radius: 18px;
+  --radius2: 24px;
+  --tap: 44px;
+  --panelMaxW: 560px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  overflow:hidden;
+}
+.app{ position:relative; width:100vw; height:100vh; background:#000; }
+
+.layer{ position:absolute; inset:0; overflow:hidden; }
+.sceneLayer{ z-index: 1; }
+.midLayer{ z-index: 2; pointer-events:none; }
+
+.bgImg, .midSvgImg, .hudImg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+}
+.midSvgImg{ pointer-events:none; }
+.hotspots{ position:absolute; inset:0; pointer-events:auto; }
+
+.dimmer{
+  position:absolute; inset:0; z-index: 3;
+  background: rgba(0,0,0,0.36);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 180ms ease;
+}
+
+.hudImg{ z-index: 4; pointer-events:none; }
+.hudButtons{ position:absolute; inset:0; z-index: 5; pointer-events:auto; }
+
+/* HUD buttons (hit zones) */
+.hudBtn{
+  position:absolute;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding: 10px 12px;
+  cursor:pointer;
+  user-select:none;
+  touch-action: manipulation;
+}
+.hudBtn:active{ transform: scale(0.98); }
+.hudBtn .ico{ width:18px; height:18px; border-radius: 6px; background: rgba(255,255,255,0.14); }
+.hudBtn .lbl{ font-size: 13px; color: rgba(255,255,255,0.88); }
+
+.hsBtn{
+  position:absolute;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.00);
+  background: rgba(255,255,255,0.00);
+  cursor:pointer;
+  touch-action: manipulation;
+}
+
+/* Panels */
+.panelRoot{ position:absolute; inset:0; z-index: 6; pointer-events:none; }
+.panel{
+  position:absolute;
+  left: 50%;
+  width: min(var(--panelMaxW), calc(100vw - 18px));
+  transform: translateX(-50%);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow:hidden;
+  pointer-events:auto;
+  transition: transform 240ms ease;
+}
+.panelTop{ top: calc(var(--safeTop) + 10px); transform: translateX(-50%) translateY(-120%); }
+.panelBottom{ bottom: calc(var(--safeBot) + 10px); transform: translateX(-50%) translateY(120%); }
+.panel.open.panelTop{ transform: translateX(-50%) translateY(0); }
+.panel.open.panelBottom{ transform: translateX(-50%) translateY(0); }
+
+.panelHeader{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 14px 10px 14px;
+  background: rgba(0,0,0,0.22);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.panelTitle{ display:flex; align-items:center; gap:10px; font-weight:700; }
+.panelTitle .dot{ width:10px; height:10px; border-radius:50%; background: var(--accent); box-shadow: 0 0 18px rgba(255,70,190,0.35); }
+.panelClose{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--text);
+  border-radius: 12px;
+  height: 34px;
+  padding: 0 12px;
+  cursor:pointer;
+}
+.panelBody{ padding: 14px; }
+.panelBody p{ margin:0 0 10px 0; color: var(--muted); line-height:1.35; }
+.small{ font-size:12px; color: var(--muted); }
+.grid{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:10px; }
+.card{ background: rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding:10px; }
+.card h3{ margin:0 0 6px 0; font-size:14px; }
+.badge{ display:inline-block; font-size:11px; color: rgba(255,255,255,0.85); border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 999px; }
+.row{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
+.btn{
+  height: 36px; border-radius: 12px; border:1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.08); color: var(--text); padding: 0 12px; cursor:pointer;
+}
+.btn.primary{ background: rgba(255,70,190,0.18); border-color: rgba(255,70,190,0.35); }
+
+.stat{ margin: 10px 0; }
+.statTop{ display:flex; align-items:center; justify-content:space-between; font-size:12px; color: rgba(255,255,255,0.78); margin-bottom:6px; }
+.bar{ height:10px; border-radius:999px; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); overflow:hidden; }
+.fill{ height:100%; width:50%; border-radius:999px; background: rgba(255,255,255,0.35); }
+.mission{ margin:10px 0; padding:10px; border-radius: var(--radius); border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.20); }
+.missionTitle{ font-weight:700; margin-bottom:6px; }
+
+/* Modal */
+.modalRoot{ position:absolute; inset:0; z-index: 7; pointer-events:none; }
+.modalBackdrop{ position:absolute; inset:0; background: rgba(0,0,0,0.52); opacity:0; transition: opacity 160ms ease; pointer-events:auto; }
+.modalCard{
+  position:absolute; left:50%; top:50%;
+  transform: translate(-50%,-50%) scale(0.98);
+  width: min(560px, calc(100vw - 18px));
+  background: var(--glass2);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 14px;
+  opacity:0;
+  pointer-events:auto;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.modalOpen .modalBackdrop{ opacity:1; }
+.modalOpen .modalCard{ opacity:1; transform: translate(-50%,-50%) scale(1); }
+.choiceList{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.choiceBtn{ text-align:left; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.06); color: var(--text); cursor:pointer; }
+
+/* Toast */
+.toastRoot{ position:absolute; left:50%; transform:translateX(-50%); z-index: 8; bottom: calc(var(--safeBot) + 10px); display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+.toast{
+  pointer-events:auto;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Debug */
+.debug .hudBtn, .debug .hsBtn{ outline: 2px dashed rgba(255,200,0,0.75); }
+.debug .hsBtn{ background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
+.debugBadge{
+  position:absolute; z-index: 9;
+  top: calc(var(--safeTop) + 10px);
+  right: 10px;
+  background: rgba(255,200,0,0.16);
+  border: 1px solid rgba(255,200,0,0.35);
+  color: rgba(255,230,140,0.95);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Rotate gate */
+.rotateGate{
+  position:fixed; inset:0; z-index: 50;
+  background: radial-gradient(900px 500px at 50% 0%, rgba(255,70,190,0.14), transparent 55%),
+              rgba(0,0,0,0.80);
+  display:none; align-items:center; justify-content:center; padding: 18px;
+}
+.rotateGate.show{ display:flex; }
+.rotateCard{
+  width: min(520px, 100%);
+  background: rgba(20,20,28,0.72);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+.rotateIcon{ width:58px; height:58px; border-radius:18px; background: rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.12); margin-bottom:10px; }
+.rotateCard h1{ margin:6px 0; font-size:22px; }
+.rotateCard p{ margin:0 0 12px 0; color: rgba(255,255,255,0.78); }
+.hint{ margin-top:10px; color: rgba(255,255,255,0.62); font-size:12px; }

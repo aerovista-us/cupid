@@ -1,0 +1,72 @@
+[
+  {
+    "id": "afterparty_apartment",
+    "title": "Afterparty Apartment",
+    "mood": "chaos \u00b7 intimate",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "late_night_diner",
+    "title": "Late Night Diner",
+    "mood": "vulnerable \u00b7 talk",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "neon_laundry",
+    "title": "Neon Laundry",
+    "mood": "flirty \u00b7 awkward",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "karaoke_bar",
+    "title": "Dive Bar Karaoke",
+    "mood": "public \u00b7 pressure",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "rooftop",
+    "title": "Rooftop Overlook",
+    "mood": "turning point",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "gas_station",
+    "title": "Road Trip Gas Station",
+    "mood": "compatibility",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "house_party",
+    "title": "Friend\u2019s House Party",
+    "mood": "jealousy \u00b7 chaos",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "rain_walk",
+    "title": "Rain Walk",
+    "mood": "silence \u00b7 intimacy",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "airport",
+    "title": "Airport Goodbye",
+    "mood": "countdown \u00b7 regret",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  },
+  {
+    "id": "hospital",
+    "title": "Hospital Waiting Room",
+    "mood": "truth \u00b7 presence",
+    "bg": "bg.png",
+    "mid": "mid.svg"
+  }
+]

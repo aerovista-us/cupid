@@ -1,0 +1,10 @@
+{
+  "id": "hospital",
+  "title": "Hospital Waiting Room",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "hotspots": [],
+  "widgets": {
+    "locationTitle": true
+  }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cupid Sandbox — HUD Prototype v2</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="rotateGate" class="rotateGate" aria-hidden="true">
+    <div class="rotateCard">
+      <div class="rotateIcon" aria-hidden="true"></div>
+      <h1>Rotate to Landscape</h1>
+      <p>This experience is landscape-first. Turn your phone sideways to play.</p>
+      <button id="rotateTryFullscreen" class="btn">Go Fullscreen</button>
+      <div class="hint">Tip: rotate first, then fullscreen for best results.</div>
+    </div>
+  </div>
+
+  <main id="app" class="app" aria-label="Cupid HUD Prototype v2">
+    <!-- 1) Background PNG/JPG -->
+    <section class="layer sceneLayer" aria-label="Scene background">
+      <img id="bgImg" class="bgImg" alt="Scene background" />
+    </section>
+
+    <!-- 2) Mid layer (SVG overlay + hotspots). Canvas comes later. -->
+    <section class="layer midLayer" aria-label="Mid layer">
+      <img id="midSvgImg" class="midSvgImg" alt="" aria-hidden="true" />
+      <div id="hotspots" class="hotspots" aria-label="Scene hotspots"></div>
+    </section>
+
+    <!-- Dimmer when panels/modals are open -->
+    <div id="dimmer" class="dimmer" aria-hidden="true"></div>
+
+    <!-- 3) HUD overlay image -->
+    <img id="hudImg" class="hudImg" src="ui/hud_shell.png" alt="" aria-hidden="true" />
+
+    <!-- 4) HUD buttons hit layer -->
+    <nav id="hudButtons" class="hudButtons" aria-label="HUD buttons"></nav>
+
+    <!-- Panels + modal + toasts -->
+    <section id="panelRoot" class="panelRoot" aria-label="Panels"></section>
+    <section id="modalRoot" class="modalRoot" aria-label="Modal"></section>
+    <div id="toastRoot" class="toastRoot" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="debugBadge" class="debugBadge" hidden>DEBUG</div>
+  </main>
+
+  <script type="module" src="engine/main.js"></script>
+</body>
+</html>

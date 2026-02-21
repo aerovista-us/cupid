@@ -1,0 +1,385 @@
+/* Cupid PoC — Layer order: scene → hotspots → HUD → panels → modal */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #0d0d0f;
+  color: #e8e6e3;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.layer > * {
+  pointer-events: auto;
+}
+
+/* —— Scene —— */
+#scene-layer {
+  z-index: 1;
+}
+
+.scene-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1a1a1e;
+}
+
+/* —— Hotspots —— */
+#hotspots-layer {
+  z-index: 2;
+  pointer-events: none;
+}
+
+#hotspots-layer .hotspot {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  background: rgba(255, 182, 193, 0.08);
+  border-radius: 8px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+#hotspots-layer .hotspot:hover {
+  background: rgba(255, 182, 193, 0.2);
+  border-color: rgba(255, 182, 193, 0.7);
+}
+
+#hotspots-layer .hotspot .hotspot-label {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  background: rgba(0,0,0,0.75);
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+#hotspots-layer .hotspot:hover .hotspot-label {
+  opacity: 1;
+}
+
+/* —— HUD —— */
+#hud-layer {
+  z-index: 3;
+}
+
+#hud-shell {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#hud-buttons {
+  position: absolute;
+  inset: 0;
+}
+
+.hud-btn {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e8e6e3;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hud-btn:hover {
+  background: rgba(255,182,193,0.15);
+  border-color: rgba(255,182,193,0.4);
+}
+
+/* —— Panels (slide from right) —— */
+#panel-root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 90vw);
+  z-index: 10;
+  pointer-events: none;
+}
+
+#panel-root .panel {
+  pointer-events: auto;
+  height: 100%;
+  background: #16161a;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  box-shadow: -8px 0 24px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s ease-out;
+  overflow: hidden;
+}
+
+#panel-root .panel.is-open {
+  transform: translateX(0);
+}
+
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.panel-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.panel-close:hover {
+  color: #e8e6e3;
+}
+
+.panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+/* Stats panel */
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stat-name {
+  width: 90px;
+  font-size: 0.85rem;
+}
+
+.stat-bar-wrap {
+  flex: 1;
+  height: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stat-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.stat-bar.trust    { background: linear-gradient(90deg, #4a7c59, #6bcf7b); }
+.stat-bar.attraction { background: linear-gradient(90deg, #8b4a7c, #e878a8); }
+.stat-bar.resentment { background: linear-gradient(90deg, #7c4a4a, #e85c5c); }
+.stat-bar.chaos   { background: linear-gradient(90deg, #7c6a4a, #e8c45c); }
+
+.stat-value {
+  width: 28px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-changes {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.stat-changes li {
+  margin-bottom: 6px;
+}
+
+/* Log panel */
+.log-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.log-list li:last-child {
+  border-bottom: none;
+}
+
+.log-time {
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+/* Map panel */
+.map-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.map-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.map-list li.current {
+  border: 1px solid rgba(255,182,193,0.4);
+}
+
+.map-list li.locked {
+  opacity: 0.5;
+}
+
+.panel-stub {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* —— Modal —— */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: #1e1e24;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+.modal-prompt {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.modal-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-choices button {
+  padding: 12px 16px;
+  text-align: left;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: #e8e6e3;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.modal-choices button:hover {
+  background: rgba(255,182,193,0.12);
+  border-color: rgba(255,182,193,0.35);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #e8e6e3;
+}
+
+/* When panel is open, dim and disable scene/hotspots */
+body.panel-open #scene-layer,
+body.panel-open #hotspots-layer,
+body.panel-open #hud-layer {
+  filter: brightness(0.7);
+}
+
+body.panel-open #hotspots-layer .hotspot {
+  pointer-events: none;
+  cursor: default;
+}

@@ -1,0 +1,86 @@
+{
+  "id": "afterparty_apartment",
+  "title": "Afterparty Apartment",
+  "bg": "bg.png",
+  "mid": "mid.svg",
+  "meta": {
+    "tier": "Early Game Chaos",
+    "tone": "Flirty pressure",
+    "vibe": "Neon, intimate, messy"
+  },
+  "concept": "A cramped apartment after a party. Tension hangs in the air.",
+  "coreGoal": "Create a real moment without blowing the night up.",
+  "mechanics": [
+    "Trust vs Chaos tension",
+    "Memory Log",
+    "Key Items unlock choices"
+  ],
+  "hotspotsDesign": [
+    {
+      "name": "Phone on couch",
+      "options": [
+        "Flip it over",
+        "Leave it"
+      ],
+      "notes": "Can spike Chaos or build Trust."
+    }
+  ],
+  "secrets": [
+    "Hidden text thread",
+    "Bathroom confession angle"
+  ],
+  "outcomes": [
+    "Strangers → friends",
+    "Strangers → enemies"
+  ],
+  "dlcHooks": [
+    "Extended apartment wing: balcony + hallway neighbors"
+  ],
+  "widgets": {
+    "locationTitle": true
+  },
+  "hotspots": [
+    {
+      "id": "phone",
+      "x": 0.66,
+      "y": 0.7,
+      "w": 0.12,
+      "h": 0.14,
+      "label": "Phone",
+      "choices": [
+        {
+          "text": "Flip it over",
+          "effects": [
+            {
+              "type": "add",
+              "key": "stats.trust",
+              "value": -1
+            },
+            {
+              "type": "add",
+              "key": "stats.chaos",
+              "value": 2
+            }
+          ],
+          "toast": "+2 Chaos  ·  -1 Trust"
+        },
+        {
+          "text": "Leave it",
+          "effects": [
+            {
+              "type": "add",
+              "key": "stats.trust",
+              "value": 1
+            },
+            {
+              "type": "add",
+              "key": "stats.resentment",
+              "value": -1
+            }
+          ],
+          "toast": "+1 Trust  ·  -1 Resentment"
+        }
+      ]
+    }
+  ]
+}
