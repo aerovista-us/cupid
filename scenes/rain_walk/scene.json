@@ -1,7 +1,7 @@
 {
   "id": "rain_walk",
   "title": "Rain Walk",
-  "bg": "bg.png",
+  "bg": "bg.svg",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

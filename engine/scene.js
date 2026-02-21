@@ -25,7 +25,7 @@ export class SceneManager{
   async loadScene(sceneId){
     const scene = await loadJSON(`scenes/${sceneId}/scene.json`);
     this.scene = scene;
-    const bgFile = scene.bg || 'bg.png';
+    const bgFile = scene.bg || 'bg.svg';
     const bgPath = `scenes/${sceneId}/${bgFile}`;
     this.bgImgEl.alt = scene.title || sceneId;
     setImgSrcWithFallback(this.bgImgEl, bgPath);
