@@ -1,0 +1,13 @@
+{
+  "name": "cupid",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "serve": "npx serve -p 3000 ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}

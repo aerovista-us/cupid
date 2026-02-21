@@ -13,7 +13,6 @@
   <rect width="1920" height="1080" fill="url(#r)"/>
   <g opacity="0.85">
     <text x="60" y="120" font-family="system-ui,Segoe UI,Arial" font-size="56" fill="rgba(255,255,255,0.88)" font-weight="700">Friend’s House Party</text>
-    <text x="60" y="170" font-family="system-ui,Segoe UI,Arial" font-size="24" fill="rgba(255,255,255,0.70)">Replace this SVG with your generated scene image (same filename), keep the scene.json.</text>
   </g>
   <g opacity="0.22">
     <circle cx="1550" cy="220" r="180" fill="rgba(255,255,255,0.25)"/>

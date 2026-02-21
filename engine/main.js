@@ -335,7 +335,7 @@ if (!state.settings?.ageGatePassed) {
     title: 'Age Gate',
     body: '<p>This experience includes mature themes. You must be 18 or older to continue.</p>',
     choices: [
-      { text: 'I am 18+', action: 'pick', onPick: () => { state = { ...state, settings: { ...state.settings, ageGatePassed: true } }; storage.save(state); hudRefresh(); } },
+      { text: 'I am 18+', action: 'close', onPick: () => { state = { ...state, settings: { ...state.settings, ageGatePassed: true } }; storage.save(state); hudRefresh(); } },
       { text: 'Leave', action: 'close' }
     ]
   });
