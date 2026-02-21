@@ -1,7 +1,7 @@
 {
   "id": "airport",
   "title": "Airport Goodbye",
-  "bg": "bg.svg",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

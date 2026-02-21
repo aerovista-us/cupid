@@ -25,11 +25,11 @@ export class SceneManager{
   async loadScene(sceneId){
     const scene = await loadJSON(`scenes/${sceneId}/scene.json`);
     this.scene = scene;
-    const bgFile = scene.bg || 'bg.svg';
+    const bgFile = scene.bg || 'bg.png';
     const bgPath = `scenes/${sceneId}/${bgFile}`;
     this.bgImgEl.alt = scene.title || sceneId;
     setImgSrcWithFallback(this.bgImgEl, bgPath);
-    if (scene.mid){ this.midSvgEl.src = `scenes/${sceneId}/${scene.mid}`; this.midSvgEl.style.display='block'; }
+    if (scene.mid){ setImgSrcWithFallback(this.midSvgEl, `scenes/${sceneId}/${scene.mid}`); this.midSvgEl.style.display='block'; }
     else { this.midSvgEl.style.display='none'; this.midSvgEl.removeAttribute('src'); }
     this.renderHotspots(scene);
     if (this.editor && this.editor.enabled) this.editor._syncFromScene();

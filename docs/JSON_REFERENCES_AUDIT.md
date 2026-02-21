@@ -10,7 +10,7 @@ Audit of all `.json` files and linked assets: spelling, file references, and cro
 | Field / reference | Status |
 |-------------------|--------|
 | **id** (10 entries) | All match scene folders: `afterparty_apartment`, `late_night_diner`, `neon_laundry`, `karaoke_bar`, `rooftop`, `gas_station`, `house_party`, `rain_walk`, `airport`, `hospital`. |
-| **bg** | All `"bg.svg"` — files exist as `scenes/<id>/bg.svg`. |
+| **bg** | All `"bg.png"` — primary; files exist as `scenes/<id>/bg.png`. Fallback to .svg on load error (engine). |
 | **mid** | All `"mid.svg"` — files exist as `scenes/<id>/mid.svg`. |
 | **unlockConditions** | `flag`: `afterparty_completed`, `diner_visited`, `rooftop_visited`, `rain_walk_done`, `airport_goodbye`. `stat`: `trust`, `attraction` (match `defaultState.stats`). |
 
@@ -75,8 +75,8 @@ Audit of all `.json` files and linked assets: spelling, file references, and cro
 | **data/items.json** | Not loaded in current main.js (hardcoded inventory) | Exists. |
 | **data/missions.json** | Not loaded in current main.js (hardcoded mission) | Exists. |
 | **scenes/\<id\>/scene.json** | `engine/scene.js` (loadScene) | Yes for all 10 ids. |
-| **scenes/\<id\>/bg.svg** | Set from scene.bg | Yes for all 10. |
-| **scenes/\<id\>/mid.svg** | Set from scene.mid | Yes for all 10. |
+| **scenes/\<id\>/bg.png** | Set from scene.bg | Yes for all 10 (primary); engine falls back to .svg on error. |
+| **scenes/\<id\>/mid.svg** | Set from scene.mid | Yes for all 10; mid layer uses same fallback on error. |
 
 ---
 

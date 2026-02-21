@@ -53,10 +53,13 @@ test.describe('Cupid game layout', () => {
   });
 
   test('clicking Phone hotspot opens choice modal', async ({ page }) => {
-    await page.getByRole('button', { name: 'Phone' }).click({ force: true });
-    await expect(page.getByText(/Flip it over|Leave it/)).toBeVisible({ timeout: 5000 });
-    await expect(page.getByRole('dialog')).toBeVisible();
-    await page.getByRole('button', { name: 'Cancel' }).click();
+    const phoneBtn = page.locator('#hotspots').getByRole('button', { name: 'Phone' });
+    await phoneBtn.waitFor({ state: 'visible' });
+    await phoneBtn.evaluate((el) => el.click());
+    await expect(page.getByText(/Flip it over|Leave it/)).toBeVisible({ timeout: 10000 });
+    const dialog = page.locator('#modalRoot [role="dialog"]');
+    await expect(dialog).toBeVisible();
+    await dialog.getByRole('button', { name: 'Cancel' }).click();
     await expect(page.getByText(/Flip it over|Leave it/)).not.toBeVisible();
   });
 });

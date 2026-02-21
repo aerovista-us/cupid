@@ -1,7 +1,7 @@
 {
   "id": "rooftop",
   "title": "Rooftop Overlook",
-  "bg": "bg.svg",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

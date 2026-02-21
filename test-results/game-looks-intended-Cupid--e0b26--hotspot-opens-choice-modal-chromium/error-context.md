@@ -25,5 +25,12 @@
     - button "Settings" [ref=e24] [cursor=pointer]:
       - generic [ref=e25]: Settings
   - region "Panels"
-  - region "Modal"
+  - region "Modal":
+    - dialog "Phone" [ref=e27]:
+      - generic [ref=e30]: Phone
+      - generic [ref=e32]: Afterparty Apartment • phone
+      - generic [ref=e33]:
+        - button "Flip it over" [ref=e34] [cursor=pointer]
+        - button "Leave it" [ref=e35] [cursor=pointer]
+        - button "Cancel" [ref=e36] [cursor=pointer]
 ```
