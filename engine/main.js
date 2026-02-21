@@ -302,7 +302,7 @@ function renderSettings(root){
     </div>
     <input type="file" id="importSaveInput" accept=".json,application/json" style="display:none" />
     <div style="height:12px"></div>
-    <div class="small">Layer order: bg.png → mid.svg → hud_shell.png → buttons → panels/modals.</div>
+    <div class="small">Layer order: bg.svg → mid.svg → hud_shell.png → buttons → panels/modals.</div>
     <div class="small">Compiler: run <span class="kbd">python tools/compile_md_to_scenes.py</span> in your repo.</div>
   `;
   root.querySelector('#btnFullscreen').addEventListener('click', async () => await requestFullscreen(document.documentElement));
