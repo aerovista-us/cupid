@@ -24,6 +24,10 @@ Layers (bottom to top) in `css/app.css`:
 
 **Recovery fix:** `.hudButtons` is full-viewport (`inset: 0`) but was `pointer-events: auto`, so it captured all taps and hotspots never received clicks. The fix: set `.hudButtons` to `pointer-events: none` and `.hudButtons .hudBtn` to `pointer-events: auto`, so only the HUD buttons capture clicks and the rest pass through to the hotspots layer.
 
+## Landscape required (phone)
+
+On phone-sized viewports (width &lt; 768px), the app shows a **rotate gate** when the device is in portrait: "Place your phone in landscape to continue." The game cannot be used until the device is rotated to landscape. The gate has `z-index: 200`, `pointer-events: auto` when shown, and `body.rotateGateActive` disables `pointer-events` on `.app` so taps do not reach the game. On desktop (width ≥ 768px) the gate is not shown.
+
 ## Init sequence
 
 The app has no continuous game loop; startup is the top-level async code in `engine/main.js`.

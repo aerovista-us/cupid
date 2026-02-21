@@ -193,8 +193,10 @@ body{
   background: radial-gradient(900px 500px at 50% 0%, rgba(255,70,190,0.14), transparent 55%),
               rgba(0,0,0,0.82);
   display:none; align-items:center; justify-content:center; padding: 18px;
+  pointer-events:none;
 }
-.rotateGate.show{ display:flex; }
+.rotateGate.show{ display:flex; pointer-events:auto; }
+body.rotateGateActive .app{ pointer-events:none; }
 .rotateCard{
   width: min(560px, 100%);
   background: rgba(20,20,28,0.72);

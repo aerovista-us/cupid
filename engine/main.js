@@ -1,4 +1,4 @@
-import { loadJSON, qs, clamp01, isPortrait, requestFullscreen } from './util.js';
+import { loadJSON, qs, clamp01, isPortrait, isPhoneSized, requestFullscreen } from './util.js';
 import { createHUDButtons } from './hud.js';
 import { PanelManager } from './panels.js';
 import { SceneManager } from './scene.js';
@@ -12,9 +12,10 @@ import { RelationshipManager } from './relationship.js';
 const rotateGate = qs('#rotateGate');
 qs('#rotateTryFullscreen').addEventListener('click', async () => { await requestFullscreen(document.documentElement); });
 function updateRotateGate(){
-  const portrait = isPortrait();
-  rotateGate.classList.toggle('show', portrait);
-  rotateGate.setAttribute('aria-hidden', portrait ? 'false':'true');
+  const mustRotate = isPhoneSized() && isPortrait();
+  rotateGate.classList.toggle('show', mustRotate);
+  rotateGate.setAttribute('aria-hidden', mustRotate ? 'false' : 'true');
+  document.body.classList.toggle('rotateGateActive', mustRotate);
 }
 window.addEventListener('resize', updateRotateGate);
 window.addEventListener('orientationchange', updateRotateGate);

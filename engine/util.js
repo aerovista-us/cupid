@@ -20,6 +20,10 @@ export function isPortrait(){
   if (mm && typeof mm.matches === 'boolean') return mm.matches;
   return window.innerHeight > window.innerWidth;
 }
+/** True when viewport is phone-sized (enforce landscape gate only on phones). */
+export function isPhoneSized(){
+  return typeof window !== 'undefined' && window.innerWidth < 768;
+}
 export async function requestFullscreen(el){
   try{ if (document.fullscreenElement) return; if (el.requestFullscreen) await el.requestFullscreen(); }catch(_){}
 }
