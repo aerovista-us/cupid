@@ -41,7 +41,8 @@ body{
   transition: opacity 180ms ease;
 }
 .hudImg{ z-index: 4; pointer-events:none; }
-.hudButtons{ position:absolute; inset:0; z-index: 5; pointer-events:auto; }
+.hudButtons{ position:absolute; inset:0; z-index: 5; pointer-events:none; }
+.hudButtons .hudBtn{ pointer-events:auto; }
 .hudBtn{
   position:absolute; min-width: var(--tap); min-height: var(--tap);
   border-radius: 14px;

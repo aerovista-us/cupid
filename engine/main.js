@@ -56,6 +56,7 @@ const editor = new HotspotEditor({
   setScene: (nextScene) => { sceneManager.setScene(nextScene); window.__CURRENT_SCENE__ = nextScene; hudRefresh(); },
   modal
 });
+sceneManager.setEditor(editor);
 
 const scenesIndex = await loadJSON('data/scenes.json');
 await sceneManager.loadScene(state.sceneId);
@@ -318,7 +319,7 @@ function renderSettings(root){
       const text = await file.text();
       const parsed = storage.parseSave(text);
       if (!parsed) { toasts.show('Invalid save file'); return; }
-      state = { ...defaultState, ...parsed };
+      state = storage.mergeWithDefaults(parsed, defaultState);
       storage.save(state);
       await sceneManager.loadScene(state.sceneId);
       panelManager.closeAll();

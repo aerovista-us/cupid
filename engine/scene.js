@@ -1,4 +1,17 @@
 import { loadJSON, escapeHtml } from './util.js';
+
+/** Set img src; on error try same base name with .svg (if path was .png) or .png (if .svg). */
+function setImgSrcWithFallback(imgEl, path){
+  imgEl.src = path;
+  imgEl.onerror = function onBgError(){
+    imgEl.onerror = null;
+    const alt = path.replace(/\.(png|jpe?g|webp)$/i, '.svg') !== path
+      ? path.replace(/\.(png|jpe?g|webp)$/i, '.svg')
+      : path.replace(/\.svg$/i, '.png');
+    if (alt !== path) imgEl.src = alt;
+  };
+}
+
 export class SceneManager{
   constructor({ bgImgEl, midSvgEl, hotspotsEl, modal, getState, setState, toast }){
     this.bgImgEl = bgImgEl; this.midSvgEl = midSvgEl; this.hotspotsEl = hotspotsEl;
@@ -12,8 +25,10 @@ export class SceneManager{
   async loadScene(sceneId){
     const scene = await loadJSON(`scenes/${sceneId}/scene.json`);
     this.scene = scene;
-    this.bgImgEl.src = `scenes/${sceneId}/${scene.bg || 'bg.png'}`;
+    const bgFile = scene.bg || 'bg.png';
+    const bgPath = `scenes/${sceneId}/${bgFile}`;
     this.bgImgEl.alt = scene.title || sceneId;
+    setImgSrcWithFallback(this.bgImgEl, bgPath);
     if (scene.mid){ this.midSvgEl.src = `scenes/${sceneId}/${scene.mid}`; this.midSvgEl.style.display='block'; }
     else { this.midSvgEl.style.display='none'; this.midSvgEl.removeAttribute('src'); }
     this.renderHotspots(scene);
