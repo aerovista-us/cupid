@@ -24,6 +24,10 @@ Layers (bottom to top) in `css/app.css`:
 
 **Recovery fix:** `.hudButtons` is full-viewport (`inset: 0`) but was `pointer-events: auto`, so it captured all taps and hotspots never received clicks. The fix: set `.hudButtons` to `pointer-events: none` and `.hudButtons .hudBtn` to `pointer-events: auto`, so only the HUD buttons capture clicks and the rest pass through to the hotspots layer.
 
+## Title screen
+
+The app can be entered via **title.html** (mood-based title screen) or **index.html** (game directly). Title screen uses save data from `cupid_proto_v3_editor` to pick a mood (neutral, romantic, glitch, cold, cosmic) and shows `title/base/<mood>.png` with overlays (glow.svg, rain.svg), vignette, and color grading. CSS: `css/title.css`. Logic: `engine/title.js`. Add PNGs to `title/base/` per mood; if missing, a gradient fallback is shown. Play button links to `index.html`.
+
 ## Landscape required (phone)
 
 On phone-sized viewports (width &lt; 768px), the app shows a **rotate gate** when the device is in portrait: "Place your phone in landscape to continue." The game cannot be used until the device is rotated to landscape. The gate has `z-index: 200`, `pointer-events: auto` when shown, and `body.rotateGateActive` disables `pointer-events` on `.app` so taps do not reach the game. On desktop (width ≥ 768px) the gate is not shown.

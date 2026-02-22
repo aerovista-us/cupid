@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cupid Sandbox — Title</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/title.css" />
+</head>
+<body>
+  <main id="titleRoot" aria-label="Title screen background">
+    <img id="baseImg" class="layer baseImg parallax fadeIn" src="title/base/neutral.png" alt="" />
+
+    <div class="layer svgLayer fadeIn">
+      <object data="title/overlays/glow.svg" type="image/svg+xml" aria-hidden="true"></object>
+    </div>
+
+    <div class="layer svgLayer" style="opacity:0.55">
+      <object data="title/overlays/rain.svg" type="image/svg+xml" aria-hidden="true"></object>
+    </div>
+
+    <div id="grade" class="layer grade neutral"></div>
+    <div class="layer vignette"></div>
+    <div class="layer grain"></div>
+
+    <div class="titleActions">
+      <a href="index.html" class="btn">Play</a>
+    </div>
+  </main>
+
+  <script src="engine/title.js"></script>
+</body>
+</html>

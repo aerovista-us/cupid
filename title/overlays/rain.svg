@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="drop" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.22)"/>
+    </linearGradient>
+  </defs>
+  <g id="drops"></g>
+  <script><![CDATA[
+    const g = document.getElementById('drops');
+    const W=1920,H=1080,N=260;
+    for(let i=0;i<N;i++){
+      const x=Math.random()*W;
+      const y=Math.random()*H;
+      const len=40+Math.random()*90;
+      const w=1+Math.random()*1.2;
+      const line=document.createElementNS('http://www.w3.org/2000/svg','rect');
+      line.setAttribute('x',x.toFixed(2));
+      line.setAttribute('y',(-len+ y).toFixed(2));
+      line.setAttribute('width',w.toFixed(2));
+      line.setAttribute('height',len.toFixed(2));
+      line.setAttribute('rx','1');
+      line.setAttribute('fill','url(#drop)');
+      line.style.opacity=(0.25+Math.random()*0.45).toFixed(2);
+      const dur=(2.2+Math.random()*1.6).toFixed(2);
+      const a=document.createElementNS('http://www.w3.org/2000/svg','animateTransform');
+      a.setAttribute('attributeName','transform');
+      a.setAttribute('type','translate');
+      a.setAttribute('dur',dur+'s');
+      a.setAttribute('repeatCount','indefinite');
+      a.setAttribute('values',`0,${-H}; 0,${H*1.1}`);
+      a.setAttribute('additive','sum');
+      line.appendChild(a);
+      g.appendChild(line);
+    }
+  ]]></script>
+</svg>
