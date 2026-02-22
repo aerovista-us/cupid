@@ -1,7 +1,7 @@
 {
   "id": "house_party",
   "title": "Friend’s House Party",
-  "bg": "location-07-house-party.png",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

@@ -1,7 +1,7 @@
 {
   "id": "gas_station",
   "title": "Road Trip Gas Station",
-  "bg": "location-06-road-trip-gas-station.png",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

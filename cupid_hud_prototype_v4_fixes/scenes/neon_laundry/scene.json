@@ -1,7 +1,7 @@
 {
   "id": "neon_laundry",
   "title": "Neon Laundry",
-  "bg": "location-03-neon-laundry.png",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

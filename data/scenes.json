@@ -1,5 +1,5 @@
 [
-  {"id":"afterparty_apartment","title":"Afterparty Apartment","mood":"chaos · intimate","bg":"bg.png","mid":"mid.svg"},
+  {"id":"afterparty_apartment","title":"Afterparty Apartment","mood":"chaos · intimate","bg":"location-01-afterparty-apartment.png","mid":"mid.svg"},
   {"id":"late_night_diner","title":"Late Night Diner","mood":"vulnerable · talk","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"afterparty_completed"}},
   {"id":"neon_laundry","title":"Neon Laundry","mood":"flirty · awkward","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"afterparty_completed"}},
   {"id":"karaoke_bar","title":"Dive Bar Karaoke","mood":"public · pressure","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"afterparty_completed"}},
@@ -8,5 +8,5 @@
   {"id":"house_party","title":"Friend's House Party","mood":"jealousy · chaos","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"stat","stat":"attraction","min":4}},
   {"id":"rain_walk","title":"Rain Walk","mood":"silence · intimacy","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"rooftop_visited"}},
   {"id":"airport","title":"Airport Goodbye","mood":"countdown · regret","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"rain_walk_done"}},
-  {"id":"hospital","title":"Hospital Waiting Room","mood":"truth · presence","bg":"bg.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"airport_goodbye"}}
+  {"id":"hospital","title":"Hospital Waiting Room","mood":"truth · presence","bg":"hospital.png","mid":"mid.svg","unlockConditions":{"type":"flag","flag":"airport_goodbye"}}
 ]

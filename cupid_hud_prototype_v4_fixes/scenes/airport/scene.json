@@ -1,7 +1,7 @@
 {
-  "id": "hospital",
-  "title": "Hospital Waiting Room",
-  "bg": "hospital.png",
+  "id": "airport",
+  "title": "Airport Goodbye",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "hotspots": [],
   "widgets": {

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cupid Sandbox — HUD Prototype v3 (Editor + Compiler)</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="rotateGate" class="rotateGate" aria-hidden="true">
+    <div class="rotateCard">
+      <div class="rotateIcon" aria-hidden="true"></div>
+      <h1>Rotate to Landscape</h1>
+      <p>Landscape-first. Turn your phone sideways to play.</p>
+      <button id="rotateTryFullscreen" class="btn">Go Fullscreen</button>
+      <div class="hint">Tip: rotate first, then fullscreen for best results.</div>
+    </div>
+  </div>
+
+  <main id="app" class="app" aria-label="Cupid HUD Prototype v3">
+    <section class="layer sceneLayer" aria-label="Scene background">
+      <img id="bgImg" class="bgImg" alt="Scene background" />
+    </section>
+
+    <section class="layer midLayer" aria-label="Mid layer">
+      <img id="midSvgImg" class="midSvgImg" alt="" aria-hidden="true" />
+      <div id="hotspots" class="hotspots" aria-label="Scene hotspots"></div>
+    </section>
+
+    <div id="dimmer" class="dimmer" aria-hidden="true"></div>
+
+    <img id="hudImg" class="hudImg" src="ui/hud_shell.png" alt="" aria-hidden="true" />
+    <nav id="hudButtons" class="hudButtons" aria-label="HUD buttons"></nav>
+
+    <section id="panelRoot" class="panelRoot" aria-label="Panels"></section>
+    <section id="modalRoot" class="modalRoot" aria-label="Modal"></section>
+    <div id="toastRoot" class="toastRoot" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <script type="module" src="engine/main.js"></script>
+</body>
+</html>

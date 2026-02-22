@@ -1,7 +1,7 @@
 {
   "id": "late_night_diner",
   "title": "Late Night Diner",
-  "bg": "bg.png",
+  "bg": "location-02-late-night-diner.png",
   "mid": "mid.svg",
   "hotspots": [
     {"id": "counter","x":0.2,"y":0.5,"w":0.2,"h":0.25,"label":"Counter","choices":[{"text":"Sit here","effects":[{"type":"add","key":"stats.trust","value":1}],"toast":"+1 Trust"},{"text":"Walk past","effects":[],"toast":""}]},

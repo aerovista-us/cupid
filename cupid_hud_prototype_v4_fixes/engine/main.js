@@ -1,4 +1,4 @@
-import { loadJSON, qs, clamp01, isPortrait, isPhoneSized, requestFullscreen } from './util.js';
+import { loadJSON, qs, clamp01, isPortrait, requestFullscreen } from './util.js';
 import { createHUDButtons } from './hud.js';
 import { PanelManager } from './panels.js';
 import { SceneManager } from './scene.js';
@@ -6,16 +6,13 @@ import { Toasts } from './toasts.js';
 import { Storage } from './storage.js';
 import { Modal } from './modal.js';
 import { HotspotEditor } from './editor.js';
-import { ChoiceEngine } from './choiceEngine.js';
-import { RelationshipManager } from './relationship.js';
 
 const rotateGate = qs('#rotateGate');
 qs('#rotateTryFullscreen').addEventListener('click', async () => { await requestFullscreen(document.documentElement); });
 function updateRotateGate(){
-  const mustRotate = isPhoneSized() && isPortrait();
-  rotateGate.classList.toggle('show', mustRotate);
-  rotateGate.setAttribute('aria-hidden', mustRotate ? 'false' : 'true');
-  document.body.classList.toggle('rotateGateActive', mustRotate);
+  const portrait = isPortrait();
+  rotateGate.classList.toggle('show', portrait);
+  rotateGate.setAttribute('aria-hidden', portrait ? 'false':'true');
 }
 window.addEventListener('resize', updateRotateGate);
 window.addEventListener('orientationchange', updateRotateGate);
@@ -57,7 +54,6 @@ const editor = new HotspotEditor({
   setScene: (nextScene) => { sceneManager.setScene(nextScene); window.__CURRENT_SCENE__ = nextScene; hudRefresh(); },
   modal
 });
-sceneManager.setEditor(editor);
 
 const scenesIndex = await loadJSON('data/scenes.json');
 await sceneManager.loadScene(state.sceneId);
@@ -296,49 +292,14 @@ function renderSettings(root){
       <button class="btn" id="btnDebug">Toggle Debug (<span class="kbd">D</span>)</button>
       <button class="btn" id="btnEditor">Open Editor (<span class="kbd">E</span>)</button>
     </div>
-    <div style="height:10px"></div>
-    <div class="row">
-      <button class="btn" id="btnExportSave">Export Save</button>
-      <button class="btn" id="btnImportSave">Import Save</button>
-    </div>
-    <input type="file" id="importSaveInput" accept=".json,application/json" style="display:none" />
     <div style="height:12px"></div>
-    <div class="small">Layer order: bg.svg → mid.svg → hud_shell.png → buttons → panels/modals.</div>
+    <div class="small">Layer order: bg.png → mid.svg → hud_shell.png → buttons → panels/modals.</div>
     <div class="small">Compiler: run <span class="kbd">python tools/compile_md_to_scenes.py</span> in your repo.</div>
   `;
   root.querySelector('#btnFullscreen').addEventListener('click', async () => await requestFullscreen(document.documentElement));
   root.querySelector('#btnDebug').addEventListener('click', () => { state = { ...state, ui:{...state.ui, debug: !state.ui.debug} }; storage.save(state); hudRefresh(); });
   root.querySelector('#btnEditor').addEventListener('click', () => { panelManager.open('editor'); hudRefresh(); });
-  root.querySelector('#btnExportSave').addEventListener('click', () => { storage.exportSave(state); toasts.show('Save exported'); });
-  const importInput = root.querySelector('#importSaveInput');
-  root.querySelector('#btnImportSave').addEventListener('click', () => importInput.click());
-  importInput.addEventListener('change', async () => {
-    const file = importInput.files?.[0];
-    importInput.value = '';
-    if (!file) return;
-    try {
-      const text = await file.text();
-      const parsed = storage.parseSave(text);
-      if (!parsed) { toasts.show('Invalid save file'); return; }
-      state = storage.mergeWithDefaults(parsed, defaultState);
-      storage.save(state);
-      await sceneManager.loadScene(state.sceneId);
-      panelManager.closeAll();
-      toasts.show('Save imported');
-      hudRefresh();
-    } catch (_) { toasts.show('Import failed'); }
-  });
 }
 
 updateRotateGate();
-if (!state.settings?.ageGatePassed) {
-  modal.open({
-    title: 'Age Gate',
-    body: '<p>This experience includes mature themes. You must be 18 or older to continue.</p>',
-    choices: [
-      { text: 'I am 18+', action: 'close', onPick: () => { state = { ...state, settings: { ...state.settings, ageGatePassed: true } }; storage.save(state); hudRefresh(); } },
-      { text: 'Leave', action: 'close' }
-    ]
-  });
-}
 hudRefresh();

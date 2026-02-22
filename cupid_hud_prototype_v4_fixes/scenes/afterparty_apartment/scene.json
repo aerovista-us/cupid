@@ -1,7 +1,7 @@
 {
   "id": "afterparty_apartment",
   "title": "Afterparty Apartment",
-  "bg": "location-01-afterparty-apartment.png",
+  "bg": "bg.png",
   "mid": "mid.svg",
   "meta": {
     "tier": "Early Game Chaos",
@@ -60,11 +60,6 @@
               "type": "add",
               "key": "stats.chaos",
               "value": 2
-            },
-            {
-              "type": "flag",
-              "key": "flags.afterparty_completed",
-              "value": true
             }
           ],
           "toast": "+2 Chaos  ·  -1 Trust"
@@ -81,11 +76,6 @@
               "type": "add",
               "key": "stats.resentment",
               "value": -1
-            },
-            {
-              "type": "flag",
-              "key": "flags.afterparty_completed",
-              "value": true
             }
           ],
           "toast": "+1 Trust  ·  -1 Resentment"
